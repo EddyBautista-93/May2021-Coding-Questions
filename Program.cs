@@ -19,13 +19,20 @@ namespace May2021_Coding_Questions
 
           public static IEnumerable<T> UniqueInOrder<T>(IEnumerable<T> iterable)
         {
-            //your code here...
-            return "";
+            T previous = default(T);
+            foreach (T current in iterable)
+            {
+                if (!current.Equals(previous))
+                {
+                    previous = current;
+                    yield return current;
+                }
+            }
         }
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            UniqueInOrder("AAAABBBCCDAABBB");
         }
     }
 }
